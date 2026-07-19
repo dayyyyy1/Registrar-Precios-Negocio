@@ -1,4 +1,4 @@
-var CACHE_NAME = "registro-precios-v1";
+var CACHE_NAME = "registro-precios-v3";
 var FILES_TO_CACHE = [
   "./index.html",
   "./style.css",
