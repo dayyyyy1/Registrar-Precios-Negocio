@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de precios</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#D6336C" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Precios" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="app-header">
+        <svg
+          class="header-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="24"
+          height="24"
+        >
+          <path
+            d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"
+          ></path>
+          <line x1="8" y1="7" x2="16" y2="7"></line>
+          <line x1="8" y1="11" x2="16" y2="11"></line>
+          <line x1="8" y1="15" x2="13" y2="15"></line>
+        </svg>
+        <h1>Registro de precios</h1>
+      </header>
+      <p class="subtitle">
+        Anota lo que vas comprando, con su precio y categoría.
+      </p>
+
+      <div id="errorBox" class="error-box" hidden></div>
+
+      <!-- Formulario -->
+      <form id="addForm" class="card form-card">
+        <input
+          type="text"
+          id="inputName"
+          placeholder="Nombre del producto"
+          autocomplete="off"
+          required
+        />
+
+        <div class="row-2">
+          <input
+            type="number"
+            id="inputPrice"
+            placeholder="Precio"
+            step="0.01"
+            min="0"
+            required
+          />
+          <div class="qty-group">
+            <input
+              type="number"
+              id="inputQuantity"
+              value="1"
+              step="0.1"
+              min="0"
+            />
+            <select id="inputUnit">
+              <option value="kg">kg</option>
+              <option value="pieza">pieza</option>
+              <option value="unidad">unidad</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row-cat">
+          <select id="inputCategory"></select>
+          <button type="button" id="btnToggleCategory" class="btn-outline">
+            + categoría
+          </button>
+        </div>
+
+        <div id="addCategoryRow" class="row-cat" hidden>
+          <input
+            type="text"
+            id="inputNewCategory"
+            placeholder="Nueva categoría"
+          />
+          <button type="button" id="btnAddCategory" class="btn-gradient">
+            Agregar
+          </button>
+        </div>
+
+        <button type="submit" class="btn-gradient btn-full">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            width="16"
+            height="16"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Registrar producto
+        </button>
+      </form>
+
+      <!-- Buscador -->
+      <div class="search-box">
+        <svg
+          class="search-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="16"
+          height="16"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Buscar producto..."
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Filtros -->
+      <div id="filterChips" class="filter-chips"></div>
+
+      <!-- Total -->
+      <div class="total-row">
+        <span id="countLabel">0 productos</span>
+        <span id="totalLabel" class="total-amount">TOTAL $0.00</span>
+      </div>
+
+      <!-- Lista -->
+      <div id="itemsList" class="items-list"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
